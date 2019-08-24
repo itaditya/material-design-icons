@@ -119,7 +119,7 @@ function generateReactComp() {
     const componentFile = componentName + '.js';
 
     const svgCode = chunk.contents;
-    svgr(svgCode, { icon: false }, { componentName }).then(jsCode => {
+    svgr(svgCode, { icon: true }, { componentName }).then(jsCode => {
       cb(null, new File({
         path: componentFile,
         contents: new Buffer(jsCode),

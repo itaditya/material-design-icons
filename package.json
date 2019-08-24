@@ -1,28 +1,40 @@
 {
-  "name": "material-design-icons",
-  "version": "3.0.1",
+  "name": "material-svg-react-icons",
+  "version": "2.0.0",
   "description": "Material Design icons by Google",
   "main": "index.js",
+  "scripts": {
+    "to:react": "gulp react-components",
+    "to:js": "babel */react -d dist",
+    "build": "npm run to:react && npm run to:js",
+    "prepublish": "npm run build"
+  },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/google/material-design-icons"
+    "url": "https://github.com/itaditya/material-design-icons"
   },
   "keywords": [
     "icons",
     "material",
     "material-design",
-    "google"
+    "react-icons"
   ],
-  "author": "Material Design Authors",
+  "author": "Aditya Agarwal",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/google/material-design-icons/issues"
+    "url": "https://github.com/itaditya/material-design-icons/issues"
   },
-  "homepage": "https://github.com/google/material-design-icons",
+  "homepage": "https://github.com/itaditya/material-design-icons",
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.5.5",
     "@svgr/core": "^4.3.2",
-    "babel-core": "^6.1.2",
-    "babel-preset-es2015": "^6.1.2",
     "camelcase": "^5.3.1",
     "gulp": "^3.9.0",
     "gulp-if": "^2.0.0",

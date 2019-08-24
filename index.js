@@ -1,3 +1,1 @@
-module.exports = {
-  STATIC_PATH: __dirname,
-};
+module.exports = {};
