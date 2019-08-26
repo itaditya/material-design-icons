@@ -42,15 +42,10 @@ const PNG_COLORS = [
 ];
 
 gulp.task('react-components', () => {
-  _(ICON_CATEGORIES)
-    .map((category) => {
-      return gulp
-        .src(`./${category}/svg/production/*_24px.svg`)
-        .pipe(generateReactComp())
-        .pipe(gulp.dest(`./${category}/react`))
-    })
-    .thru(merge)
-    .value()
+  gulp
+    .src(`./*/svg/production/*_24px.svg`)
+    .pipe(generateReactComp())
+    .pipe(gulp.dest('./'))
 });
 
 
@@ -117,11 +112,12 @@ function generateReactComp() {
     const svgName = parseSvgName(chunk.path);
     const componentName = getComponentName(svgName);
     const componentFile = componentName + '.js';
+    const componentPath = path.join(chunk.path, '../../..');
 
     const svgCode = chunk.contents;
     svgr(svgCode, { icon: true }, { componentName }).then(jsCode => {
       cb(null, new File({
-        path: componentFile,
+        path: path.join(componentPath, 'react/', componentFile),
         contents: new Buffer(jsCode),
       }));
     })
